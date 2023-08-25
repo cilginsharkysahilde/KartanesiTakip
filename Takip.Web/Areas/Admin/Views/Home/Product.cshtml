@@ -1,0 +1,64 @@
+﻿<script src="~/js/admin/product.js"></script>
+<div class="row">
+    <div class="p-3 col-12">
+        <h2>Müşteriler</h2>
+
+
+        <div>
+            <div class="d-inline-flex mt-3 text-center">
+                <div>
+                    <label for="inputSearch1" class="form-label mt-3 me-3">Ürün İsmine Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch1" onkeyup='tableSearch(0,"inputSearch1","productTable")'>
+                </div>
+                <div>
+                    <label for="inputSearch2" class="form-label mt-3 me-3">Stok Koduna Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch2" onkeyup='tableSearch(1,"inputSearch2","productTable")'>
+                </div>
+            </div>
+        </div>
+        <div id="divProducts" class="font-size-medium mt-5">
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="NewProduct()">
+            Yeni Ürün Ekle
+        </button>
+
+        <!-- Edit Modal -->
+        <div class="modal modal-lg fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="productModalLabel">Ürün Bilgileri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <label for="inputProductName" class="form-label">Ürün Adı</label>
+                        <input type="text" id="inputProductName" class="form-control">
+
+                        <label for="inputStockCode" class="form-label">Stok Kodu</label>
+                        <input type="text" id="inputStockCode" class="form-control">
+
+                        <label for="inputCriticalNumber" class="form-label">Kritik Sayısı</label>
+                        <input type="text" id="inputCriticalNumber" class="form-control">
+
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input checked" type="checkbox" value="" id="inputActive">
+                            <label class="form-check-label" for="inputActive">
+                                Aktif
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                        <button type="button" class="btn btn-primary" onclick="SaveProduct()">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

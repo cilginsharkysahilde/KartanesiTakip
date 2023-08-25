@@ -1,0 +1,85 @@
+﻿<script src="~/js/admin/personnel.js"></script>
+<div class="row">
+    <div class="p-3 col-12">
+        <div>
+            <div class="d-inline-flex mt-5 text-center">
+                <div>
+                    <label for="inputSearch1" class="form-label mt-3 me-3">Personel Adına Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch1" onkeyup='tableSearch(0,"inputSearch1","personnelTable")'>
+                </div>
+                <div>
+                    <label for="inputSearch2" class="form-label mt-3 me-3">Role Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch2" onkeyup='tableSearch(1,"inputSearch2","personnelTable")'>
+                </div>
+            </div>
+        </div>
+
+        <div id="divPersonnels" class="mt-3">
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="NewPersonnel()">
+            Yeni Personel Ekle
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="personnelModal" tabindex="-1" aria-labelledby="personnelModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="personnelModalLabel">Personel Bilgileri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <label for="inputPersonnelName" class="form-label">Personel Adı</label>
+                        <input type="text" id="inputPersonnelName" class="form-control">
+
+                        <label for="selectRole" class="form-label mt-2">Rol</label>
+                        <select type="text" id="selectRole" class="form-select"></select>
+
+                        <label for="inputTcNumber" class="form-label mt-2">TC Kimlik Numarası</label>
+                        <input type="text" id="inputTcNumber" class="form-control">
+
+                        <label for="inputEmail" class="form-label mt-2">EMail</label>
+                        <input type="text" id="inputEmail" class="form-control">
+
+                        <label for="inputPassword" class="form-label mt-2">Şifre</label>
+                        <input type="text" id="inputPassword" class="form-control">
+
+                        <label for="inputPhoneNumber" class="form-label mt-2">Telefon Numarası</label>
+                        <input type="text" id="inputPhoneNumber" class="form-control">
+
+                        <label for="selectMaritalStatus" class="form-label mt-2">Medeni Durumu</label>
+                        <select type="text" id="selectMaritalStatus" class="form-select"></select>
+
+                        <label for="selectEducation" class="form-label mt-2">Eğitim Durumu</label>
+                        <select type="text" id="selectEducation" class="form-select"></select>
+
+                        <label for="inputStartDate" class="form-label mt-2">Başlama Tarihi</label>
+                        <input type="text" id="inputStartDate" class="form-control">
+
+                        <label for="inputQuitDate" class="form-label mt-2">Bırakma Tarihi</label>
+                        <input type="text" id="inputQuitDate" class="form-control">
+
+                        <label for="inputSalary" class="form-label mt-2">Maaş</label>
+                        <input type="text" id="inputSalary" class="form-control">
+
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input checked" type="checkbox" value="" id="inputActive">
+                            <label class="form-check-label" for="inputActive">
+                                Aktif
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                        <button type="button" class="btn btn-primary" onclick="SavePersonnel()">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

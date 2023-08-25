@@ -1,0 +1,84 @@
+﻿<script src="~/js/admin/service.js"></script>
+<div class="row">
+    <div class="p-3 col-12">
+        <div>
+            <div class="d-inline-flex mt-5 text-center">
+                <div>
+                    <label for="inputSearch1" class="form-label mt-3 me-3">Müşteriye Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch1" onkeyup='tableSearch(0,"inputSearch1","serviceTable")'>
+                </div>
+                <div>
+                    <label for="inputSearch2" class="form-label mt-3 me-3">İşlem Türüne göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch2" onkeyup='tableSearch(1,"inputSearch2","serviceTable")'>
+                </div>
+                <div>
+                    <label for="inputSearch3" class="form-label mt-3 me-3">Servis Personeline Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch3" onkeyup='tableSearch(8,"inputSearch3","serviceTable")'>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="divServices" class="mt-2">
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="NewService()">
+            Servis Gir
+        </button>
+
+        <!-- Edit Service Modal -->
+        <div class="modal modal-lg fade" id="serviceEditModal" tabindex="-1" aria-labelledby="serviceEditModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="serviceEditModalLabel">Servis Bilgileri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <label for="inputServiceCustomerName" class="form-label">Müşteri</label>
+                        <select class="form-select" type="text" id="inputServiceCustomerName" value="Müşteri Adı" disabled readonly></select>
+
+                        <label for="selectProcessType" class="form-label">İşlem Türü</label>
+                        <select type="text" id="selectProcessType" class="form-select"></select>
+
+                        <label for="selectServiceProduct" class="form-label">Ürün</label>
+                        <select type="text" id="selectServiceProduct" class="form-select"></select>
+
+                        <label for="inputItemDescription" class="form-label">Parça Açıklaması</label>
+                        <input type="text" id="inputItemDescription" class="form-control">
+
+                        <label for="inputCustomerComplaint" class="form-label">Müşteri Şikayeti</label>
+                        <input type="text" id="inputCustomerComplaint" class="form-control">
+
+                        <label for="inputWaterValues" class="form-label">Su Değerleri</label>
+                        <input type="text" id="inputWaterValues" class="form-control">
+
+                        <label for="selectServicePersonnel" class="form-label">Servis Personeli</label>
+                        <select type="text" id="selectServicePersonnel" class="form-select"></select>
+
+                        <div class="input-group mt-3">
+                            <span class="input-group-text">Özel Not</span>
+                            <textarea class="form-control" id="inputSpecialNote2" aria-label="Özel Not"></textarea>
+                        </div>
+
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input checked" type="checkbox" value="" id="inputIsMaintenanceDone">
+                            <label class="form-check-label" for="inputIsMaintenanceDone">
+                                Bakım Yapıldı mı?
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                        <button type="button" class="btn btn-primary" onclick="SaveService()">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

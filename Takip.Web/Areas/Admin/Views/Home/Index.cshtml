@@ -1,0 +1,86 @@
+﻿@using Takip.Web.Code;
+<div class="row">
+    <div class="mt-5 pt-5 col-lg-12 col-md-12 col-sm-12">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner" >
+                <div class="carousel-item active" data-bs-interval="4000">
+                    <img src="https://picsum.photos/id/295/1920/1080" class="d-block w-100" />
+                    <div class="carousel-caption d-none bg-primary border opacity-75 rounded-pill border-primary d-md-block">
+                        <h3 class="text-light">Takip Sistemine Hoş Geldin @Repo.Session.Name !</h3>
+                        <p class="text-light">Bu sistemde müşterilerini takip edebilir, servislerini girebilir, ürün stok kontrollerini yapabilirsin.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="https://picsum.photos/id/309/1920/1080" class="d-block w-100" />
+
+                    <div class="carousel-caption d-none bg-primary border opacity-75 rounded-pill border-primary d-md-block">
+                        <h5>Sağ üstteki buton ile Admin menüsünü açabilirsin.</h5>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="https://picsum.photos/id/323/1920/1080" class="d-block w-100" />
+
+                    <div class="carousel-caption d-none bg-primary border opacity-75 rounded-pill border-primary d-md-block">
+                        <h5>Aşağıdan bazı temel bilgileri kontrol edebilirsin.</h5>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mb-5">
+    <div class="mt-5 pt-5 col-lg-3 col-md-6 col-sm-6">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-secondary fw-bold">Toplam Müşteri Sayısı</h5>
+                <h6 class="card-text text-success fw-bold">@ViewBag.CustomerCount</h6>
+                <a asp-area="Admin" asp-controller="Home" asp-action="Customer" class="card-link">Müşterilere Git</a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5 pt-5 col-lg-3 col-md-6 col-sm-6">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-secondary fw-bold">Toplam Servis Sayısı</h5>
+                <h6 class="card-text text-success fw-bold">@ViewBag.ServiceCount</h6>
+                <a asp-area="Admin" asp-controller="Home" asp-action="Service" class="card-link">Servislere Git</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 pt-5 col-lg-3 col-md-6 col-sm-6">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-secondary fw-bold">Satışta Olan Ürün Sayısı</h5>
+                <h6 class="card-text text-success fw-bold">@ViewBag.ProductCount</h6>
+                <a asp-area="Admin" asp-controller="Home" asp-action="Product" class="card-link">Ürünlere Git</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 pt-5 col-lg-3 col-md-6 col-sm-6">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-secondary fw-bold">Toplam Personel Sayısı</h5>
+                <h6 class="card-text text-success fw-bold">@ViewBag.PersonnelCount</h6>
+                <a class="card-link" asp-area="Admin" asp-controller="Home" asp-action="Personnel">Personelleri Görüntüle</a>
+            </div>
+        </div>
+    </div>
+</div>
+

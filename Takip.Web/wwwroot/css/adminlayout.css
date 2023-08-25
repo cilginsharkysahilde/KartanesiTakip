@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+#title{
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-pills li a:hover{
+    background-color: #164c91;
+  }
+  
+  .navbar{
+    background-color: rgb(160, 132, 232)!important;
+  }
+  
+  :root{
+    --offcanvas-width: 270px;
+  }
+  
+  .background-color-ozel{
+    background-color: #164c91!important;
+  }
+
+  .font-size-small{
+    font-size: small;
+  }
+
+  #footerBottom{
+    margin-top: auto;
+  }
+
+  html{
+    height: 100%;
+  }
+
+  body{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .opacity100{
+    opacity: 1!important;
+  }
+
+  .single-box h5{
+    font-size: 16;
+    font-weight: 700;
+   
+  }
+
+  .single-box ul{
+    list-style: none;
+    padding: 0;
+  }
+
+  .single-box ul li a{
+    text-decoration: none;
+    
+    line-height: 2.5;
+  }

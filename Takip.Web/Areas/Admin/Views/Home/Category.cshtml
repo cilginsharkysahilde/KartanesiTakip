@@ -1,0 +1,59 @@
+﻿<script type="text/javascript" src="~/js/admin/category.js" asp-append-version="true"></script>
+<div class="row">
+    <div class="p-3 col-12">
+        <div>
+            <div class="d-inline-flex mt-5 text-center">
+                <div>
+                    <label for="inputSearch1" class="form-label mt-3 me-3">Kategori Adına Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch1" onkeyup='tableSearch(0,"inputSearch1","categoryTable")'>
+                </div>
+                <div>
+                    <label for="inputSearch2" class="form-label mt-3 me-3">Üst Kategoriye Göre</label>
+                    <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch2" onkeyup='tableSearch(1,"inputSearch2","categoryTable")'>
+                </div>
+            </div>
+        </div>
+
+        <div id="divCategories" class="mt-3">
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="NewCategory()">
+            Yeni Kategori Ekle
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="categoryModalLabel">Kategori Bilgileri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <label for="inputCategoryName" class="form-label">Kategori Adı</label>
+                        <input type="text" id="inputCategoryName" class="form-control">
+
+                        <label for="selectTopCategories" class="form-label">Üst Kategori</label>
+                        <select type="text" id="selectTopCategories" class="form-control"></select>
+
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input checked" type="checkbox" value="" id="inputActive">
+                            <label class="form-check-label" for="inputActive">
+                                Aktif
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                        <button type="button" class="btn btn-primary" onclick="SaveCategory()">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

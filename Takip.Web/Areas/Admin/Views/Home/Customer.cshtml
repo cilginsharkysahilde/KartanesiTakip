@@ -1,0 +1,222 @@
+﻿<script type="text/javascript" src="~/js/admin/customer.js" asp-append-version="true"></script>
+<div class="row">
+<div class="p-3 col-12">
+    <h2>Müşteriler</h2>
+
+    
+    <div>
+        <div class="d-inline-flex mt-3 text-center">
+            <div>
+            <label for="inputSearch1" class="form-label mt-3 me-3">İsme Göre Ara</label>
+                <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch1" onkeyup='tableSearch(0,"inputSearch1","customerTable")'>
+            </div>
+            <div>
+                <label for="inputSearch2" class="form-label mt-3 me-3">Telefona Göre Ara</label>
+                <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch2" onkeyup='tableSearch(1,"inputSearch2","customerTable")'>
+            </div>
+            <div>
+                <label for="inputSearch3" class="form-label mt-3 me-3">Ev Telefonuna Göre Ara</label>
+                <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch3" onkeyup='tableSearch(2,"inputSearch3","customerTable")'>
+            </div>
+            <div>
+                <label for="inputSearch4" class="form-label mt-3 me-3">Ürüne Göre Ara</label>
+                <input class="form-control me-3" style="max-width: 150px" type="search" placeholder="" id="inputSearch4" onkeyup='tableSearch(3,"inputSearch4","customerTable")'>
+            </div>
+
+        </div>
+    </div>
+    <div id="divCustomers" class="font-size-medium mt-3">
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" onclick="NewCustomer()">
+        Yeni Müşteri Ekle
+    </button>
+
+
+    <!-- Address Modal -->
+    <div class="modal modal-xl fade" id="addressesModal" tabindex="-1" aria-labelledby="addressesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addressesModalLabel">Adresler</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" id="divAddresses">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary me-auto" data-bs-toggle="modal" onclick="NewAddress()">
+                        Yeni Adres Ekle
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Address Modal -->
+    <div class="modal modal-lg fade" id="addressEditModal" tabindex="-1" aria-labelledby="addressEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addressEditModalLabel">Adres Bilgileri</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <label for="inputAddressName" class="form-label">Adres Adı</label>
+                    <input type="text" id="inputAddressName" class="form-control">
+
+                    <label for="inputDescription" class="form-label">Adres Açıklaması</label>
+                    <input type="text" id="inputDescription" class="form-control">
+
+                    <label for="selectCity" class="form-label">Şehir</label>
+                    <select type="text" id="selectCity" class="form-select"></select>
+
+                    <label for="selectDistrict" class="form-label">İlçe</label>
+                    <select type="text" id="selectDistrict" class="form-select"></select>
+
+                    <label for="selectCountry" class="form-label">Ülke</label>
+                    <select type="text" id="selectCountry" class="form-select"></select>
+
+                    <label for="inputZipCode" class="form-label">Posta Kodu</label>
+                    <input type="text" id="inputZipCode" class="form-control">
+
+
+                    <div class="form-check mt-2">
+                        <input class="form-check-input checked" type="checkbox" value="" id="inputActive">
+                        <label class="form-check-label" for="inputActive">
+                            Aktif
+                        </label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="button" class="btn btn-primary" onclick="SaveAddress()">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Modal -->
+    <div class="modal modal-xl fade" id="servicesModal" tabindex="-1" aria-labelledby="addressesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="serviceModalLabel">Servisler</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body" id="divServices">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary me-auto" data-bs-toggle="modal" onclick="NewService()">
+                        Servis Gir
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Service Modal -->
+    <div class="modal modal-lg fade" id="serviceEditModal" tabindex="-1" aria-labelledby="serviceEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="serviceEditModalLabel">Servis Bilgileri</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <label for="inputServiceCustomerName" class="form-label">Müşteri Adı</label>
+                    <input class="form-control" type="text" id="inputServiceCustomerName" value="Müşteri Adı" disabled readonly>
+
+                    <label for="selectProcessType" class="form-label">İşlem Türü</label>
+                    <select type="text" id="selectProcessType" class="form-select"></select>
+
+                    <label for="selectServiceProduct" class="form-label">Ürün</label>
+                    <select type="text" id="selectServiceProduct" class="form-select"></select>
+
+                    <label for="inputItemDescription" class="form-label">Parça Açıklaması</label>
+                    <input type="text" id="inputItemDescription" class="form-control">
+
+                    <label for="inputCustomerComplaint" class="form-label">Müşteri Şikayeti</label>
+                    <input type="text" id="inputCustomerComplaint" class="form-control">
+
+                    <label for="inputWaterValues" class="form-label">Su Değerleri</label>
+                    <input type="text" id="inputWaterValues" class="form-control">
+
+                    <label for="selectServicePersonnel" class="form-label">Servis Personeli</label>
+                    <select type="text" id="selectServicePersonnel" class="form-select"></select>
+
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">Özel Not</span>
+                        <textarea class="form-control" id="inputSpecialNote2" aria-label="Özel Not"></textarea>
+                    </div>
+
+
+                    <div class="form-check mt-2">
+                        <input class="form-check-input checked" type="checkbox" value="" id="inputIsMaintenanceDone">
+                        <label class="form-check-label" for="inputIsMaintenanceDone">
+                            Bakım Yapıldı mı?
+                        </label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="button" class="btn btn-primary" onclick="SaveService()">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal modal-lg fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="customerModalLabel">Müşteri Bilgileri</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <label for="inputCustomerName" class="form-label">Müşteri Adı</label>
+                    <input type="text" id="inputCustomerName" class="form-control">
+
+                    <label for="inputPhone" class="form-label">Telefon</label>
+                    <input type="text" id="inputPhone" class="form-control"></input>
+
+                    <label for="inputHomePhone" class="form-label">Ev Telefon</label>
+                    <input type="text" id="inputHomePhone" class="form-control"></input>
+
+                    <label for="selectSalesperson" class="form-label">Satış Personeli</label>
+                    <select type="text" id="selectSalesperson" class="form-select"></select>
+
+                    <label for="selectProduct" class="form-label">Ürün</label>
+                    <select type="text" id="selectProduct" class="form-select"></select>
+
+
+                    <div class="form-check mt-2">
+                        <input class="form-check-input checked" type="checkbox" value="" id="inputActive">
+                        <label class="form-check-label" for="inputActive">
+                            Aktif
+                        </label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="button" class="btn btn-primary" onclick="SaveCustomer()">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
